@@ -52,32 +52,32 @@ public class UserController {
 		return "add";
 	}
 
-	//	@PostMapping("admin/add/")
-//	public String actionAdd(@ModelAttribute("user") User user,
-//							@RequestParam("role") String role) {
-//		if (roleService.existsByName(role)) {
-//			Role tmp = roleService.getRoleByName(role);
-//			HashSet<Role> set = new HashSet<>();
-//			set.add(tmp);
-//			user.setRoles(set);
-//			userService.add(user);
-//		}
-//		return "redirect:/admin";
-//	}
+		@PostMapping("admin/add/")
+	public String actionAdd(@ModelAttribute("user") User user,
+							@RequestParam("roles") String role) {
+		if (roleService.existsByName(role)) {
+			Role tmp = roleService.getRoleByName(role);
+			HashSet<Role> set = new HashSet<>();
+			set.add(tmp);
+			user.setRoles(set);
+			userService.add(user);
+		}
+		return "redirect:/admin";
+	}
 
-//	@GetMapping(value = "/admin/edit")
-//	public String edit(@RequestParam(value = "id", defaultValue = "-1") long id, Model model) {
-//		if (id == -1) {
-//			return "redirect:/admin";
-//		}
-//		User user = userService.getUserById(id);
-//		if (user == null) {
-//			return "redirect:/admin";
-//		}
-//		model.addAttribute("user", user);
-//
-//		return "edit";
-//	}
+	@GetMapping(value = "/admin/edit")
+	public String edit(@RequestParam(value = "id", defaultValue = "-1") long id, Model model) {
+		if (id == -1) {
+			return "redirect:/admin";
+		}
+		User user = userService.getUserById(id);
+		if (user == null) {
+			return "redirect:/admin";
+		}
+		model.addAttribute("user", user);
+
+		return "edit";
+	}
 
 	@PatchMapping("admin/{id}")
 	public String actionEdit(@ModelAttribute("user") User user) {

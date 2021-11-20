@@ -23,10 +23,10 @@ public class RoleDaoImpl implements RoleDao {
         entityManager.createQuery("DELETE FROM Role WHERE id= :id").setParameter("id", id).executeUpdate();
     }
 
-//    @Override
-//    public Role getRoleById(long id) {
-//        return entityManager.find(Role.class, id);
-//    }
+    @Override
+    public Role getRoleById(long id) {
+        return entityManager.find(Role.class, id);
+    }
 
     @Override
     public Role getRoleByName(String roleName) {
@@ -42,6 +42,15 @@ public class RoleDaoImpl implements RoleDao {
     @Override
     public List<Role> getAllRoles() {
         return entityManager.createQuery("FROM Role", Role.class).getResultList();
+    }
+
+    @Override
+    public boolean existsByName(String name) {
+        try {
+            return getRoleByName(name).getRoleName().equals(name);
+        } catch (Exception e){
+            return false;
+        }
     }
 
 

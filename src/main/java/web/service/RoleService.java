@@ -15,4 +15,5 @@ public interface RoleService {
     Role getRoleByName(String roleName);
 
     List<Role> getAllRoles();
+    boolean existsByName(String name);
 }

@@ -45,4 +45,9 @@ public class RoleServiceImpl implements RoleService {
         return roleDao.getAllRoles();
     }
 
+    @Override
+    public boolean existsByName(String name) {
+        return roleDao.existsByName(name);
+    }
+
 }

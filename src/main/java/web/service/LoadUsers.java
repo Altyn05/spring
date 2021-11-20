@@ -26,7 +26,7 @@ public class LoadUsers {
     @PostConstruct
     public void forTestUsers() {
 
-        Role role1 = new Role("ROLE_USER");//делай роль админ
+        Role role1 = new Role("ROLE_USER");
         Role role2 = new Role("ROLE_ADMIN");
         roleService.add(role1);
         roleService.add(role2);
