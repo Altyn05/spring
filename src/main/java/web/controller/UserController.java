@@ -22,7 +22,7 @@ public class UserController {
 	private UserService userService;
 	private RoleService roleService;
 
-	@Autowired//
+	@Autowired
 	public UserController(UserService userService, RoleService roleService) {
 		this.userService = userService;
 		this.roleService = roleService;
@@ -52,7 +52,7 @@ public class UserController {
 		return "add";
 	}
 
-//	@PostMapping("admin/add/")
+	//	@PostMapping("admin/add/")
 //	public String actionAdd(@ModelAttribute("user") User user,
 //							@RequestParam("role") String role) {
 //		if (roleService.existsByName(role)) {
