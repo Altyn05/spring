@@ -38,7 +38,7 @@ public class LoadUsers {
 
         user1.setRoles(Set.of(role2));
         user2.setRoles(Set.of(role1));
-        user3.setRoles(Set.of(role1,role2));//норм
+        user3.setRoles(Set.of(role1,role2));
 
 
         userService.add(user1);

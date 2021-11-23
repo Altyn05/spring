@@ -13,7 +13,8 @@
         <th>name</th>
         <th>lastname</th>
         <th>email</th>
-        <th>password<th>
+        <th>password</th>
+        <th>role</th>
         <th>edit</th>
         <th>delete</th>
     </tr>
@@ -25,8 +26,15 @@
         <td th:text=${u.lastname}></td>
         <td th:text=${u.email}></td>
         <td th:text=${u.password}></td>
+        <td th:text=${u.roles}></td>
         <td><a th:href="@{admin/edit} +'?id='+${u.id} ">edit</a></td>
-        <td><a th:href="@{admin/delete} +'?id='+${u.id} ">delete</a></td>
+
+        <td>
+            <form th:method="delete" th:action="@{/delete/{id}(id=${u.id})}">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+
 
     </tr>
 </table>

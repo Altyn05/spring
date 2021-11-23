@@ -14,6 +14,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/")
@@ -52,22 +53,21 @@ public class UserController {
 		return "add";
 	}
 
-		@PostMapping("admin/add/")
+	@PostMapping("/admin/create")
 	public String actionAdd(@ModelAttribute("user") User user,
-							@RequestParam("roles") String role) {
-		if (roleService.existsByName(role)) {
-			Role tmp = roleService.getRoleByName(role);
-			HashSet<Role> set = new HashSet<>();
-			set.add(tmp);
-			user.setRoles(set);
-			userService.add(user);
+							@RequestParam("checkBox") String[] checkBox) {
+		Set<Role> allRoles = new HashSet<>();
+		for (String role : checkBox) {
+			allRoles.add(roleService.getRoleByName(role));
 		}
+		user.setRoles(allRoles);
+		userService.add(user);
 		return "redirect:/admin";
 	}
 
 	@GetMapping(value = "/admin/edit")
-	public String edit(@RequestParam(value = "id", defaultValue = "-1") long id, Model model) {
-		if (id == -1) {
+	public String edit(@RequestParam(value = "id") long id, Model model) {
+		if (id < 0) {
 			return "redirect:/admin";
 		}
 		User user = userService.getUserById(id);
@@ -79,14 +79,14 @@ public class UserController {
 		return "edit";
 	}
 
-	@PatchMapping("admin/{id}")
+	@PutMapping("admin/{id}")
 	public String actionEdit(@ModelAttribute("user") User user) {
 		userService.upDateUser(user);
 		return "redirect:/admin";
 	}
 
-	@GetMapping(value = "admin/delete")
-	public String actionDelete(@RequestParam(value = "id", defaultValue = "-1") long id) {
+	@DeleteMapping(value = "delete/{id}")
+	public String actionDelete(@PathVariable("id") Long id) {
 		userService.delete(id);
 		return "redirect:/admin";
 	} 

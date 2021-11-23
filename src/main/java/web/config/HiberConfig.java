@@ -42,8 +42,6 @@ public class HiberConfig {
         return dataSource;
     }
 
-
-
     private Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
