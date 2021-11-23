@@ -19,8 +19,12 @@
 
     <input type="text" th:field="*{password}" id="password" value="password" th:placeholder="*{password}">
     <br>
-
+    <input type="checkbox" name="checkBox" value="ROLE_USER">USER
+    <input type="checkbox" name="checkBox" value="ROLE_ADMIN">ADMIN
     <input type="submit" value="Edit User">
+    <a th:href="@{/admin}">All users</a>
+    <br>
+    <a th:href="@{/logout}">logout</a>
 </form>
 
 

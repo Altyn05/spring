@@ -30,9 +30,9 @@ public class LoadUsers {
         Role role2 = new Role("ROLE_ADMIN");
         roleService.add(role1);
         roleService.add(role2);
-        User user1 = new User("Elton", "Jon", "Jon", "user1.@mail.ru", "12345");
-        User user2 = new User("Alla", "Alla", "Pugacheva", "user2.@mail.ru", "12345");
-        User user3 = new User("Filip", "Filip", "Kirkorov", "user3.@mail.ru", "12345");
+        User user1 = new User("Elton", "Jon", "Jon", "user1@mail.ru", "12345");
+        User user2 = new User("Alla", "Alla", "Pugacheva", "user2@mail.ru", "12345");
+        User user3 = new User("Filip", "Filip", "Kirkorov", "user3@mail.ru", "12345");
 
 
 
